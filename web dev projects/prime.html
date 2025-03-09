@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Love Calculator ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: backgroundMove 10s infinite alternate;
+        }
+        @keyframes backgroundMove {
+            from { background-position: 0% 50%; }
+            to { background-position: 100% 50%; }
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            color: #ff4e50;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ff4e50;
+            border-radius: 10px;
+            outline: none;
+            text-align: center;
+        }
+        button {
+            background: #ff4e50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background: #fc466b;
+        }
+        #result, #luckyDay, #marriageDate {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ff4e50;
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>❤️ Prime Love Calculator ❤️</h1>
+    <p>Calculate Your Love Percentage % 🔥</p>
+    <input type="text" id="boyName" placeholder="Boy Name">
+    <input type="text" id="girlName" placeholder="Girl Name">
+    <button onclick="calculateLove()">Calculate Love %</button>
+    <div id="result"></div>
+    <div id="luckyDay"></div>
+    <div id="marriageDate"></div>
+</div>
+
+<script>
+    function calculateLove() {
+        let boy = document.getElementById("boyName").value;
+        let girl = document.getElementById("girlName").value;
+        if (boy === "" || girl === "") {
+            document.getElementById("result").innerHTML = "Please enter both names 😍";
+            return;
+        }
+        let lovePercentage = Math.floor(Math.random() * 100) + 1;
+        document.getElementById("result").innerHTML = "Love Percentage between " + boy + " ❤️ " + girl + " is " + lovePercentage + "%";
+        generateLuckyDay();
+        generateMarriageDate();
+    }
+
+    function generateLuckyDay() {
+        let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        let luckyDay = days[Math.floor(Math.random() * days.length)];
+        document.getElementById("luckyDay").innerHTML = "Your Lucky Love Day is: " + luckyDay + " 💕";
+    }
+
+    function generateMarriageDate() {
+        let day = Math.floor(Math.random() * 30) + 1;
+        let month = Math.floor(Math.random() * 12) + 1;
+        let year = new Date().getFullYear() + Math.floor(Math.random() * 10) + 1;
+        document.getElementById("marriageDate").innerHTML = "Your Marriage Date Prediction is: " + day + "/" + month + "/" + year + " 💍";
+    }
+</script>
+</body>
+</html>
